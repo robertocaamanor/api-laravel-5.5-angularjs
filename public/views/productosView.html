@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Productos <i class="fa fa-spin fa-spinner" ng-show="loading" aria-hidden="false"></i></h3>
+
+                <div class="box-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+                <a href="#" class="btn btn-success">Agregar producto</a>
+                <hr>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tipo</th>
+                            <th>Precio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="producto in producto.productos">
+                            <td>{{ producto.nombre }}</td>
+                            <td>{{ producto.tipo }}</td>
+                            <td>{{ producto.precio }}</td>
+                            <td><a href="#" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> Editar</a>
+                                <a href="#" class="btn btn-danger btn-xs"> <span class="fa fa-trash-o"></span> Eliminar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
