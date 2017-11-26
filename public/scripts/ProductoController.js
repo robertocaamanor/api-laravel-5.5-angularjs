@@ -42,10 +42,33 @@
                 var config = response.config;
             });
         }
-
-
         vm.getProductos();
+        vm.openModalCrearProducto = function (){
+            $("#modalCrearProducto").modal();
+        }
 
+        vm.agregarProducto = function() {
+            vm.loading = true;
+            $http.post('api/producto', {
+                nombre: vm.nombre,
+                tipo: vm.tipo,
+                precio: vm.precio,
+                stock: vm.stock,
+                descripcion: vm.descripcion
+            }).then(function (response) {
+                console.log(vm.productos);
+                // vm.tasks.push(response.data);
+                vm.productos.unshift(response.data);
+                console.log(vm.tasks);
+                vm.producto = '';
+                $("#modalCrearProducto").modal('hide');
+                vm.getProductos();
+                // alert(data.message);
+                // alert("Task Created Successfully");
+            }).catch(function () {
+                console.log("error");
+            });
+        };
 
     }
 

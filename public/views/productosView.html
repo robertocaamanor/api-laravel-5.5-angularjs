@@ -16,7 +16,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
-                <a href="#" class="btn btn-success">Agregar producto</a>
+                <a href="" class="btn btn-success" ng-click="producto.openModalCrearProducto()">Agregar producto</a>
                 <hr>
                 <table class="table table-hover">
                     <thead>
@@ -43,3 +43,64 @@
         <!-- /.box -->
     </div>
 </div>
+
+<div class="modal fade" id="modalCrearProducto">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Agregar Producto</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="producto.nombre" class="form-control" id="nombre" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo" class="col-sm-2 control-label">Tipo</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="producto.tipo" class="form-control" id="tipo" placeholder="Tipo">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="precio" class="col-sm-2 control-label">Precio</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="producto.precio" class="form-control" ng-pattern="/^[0-9]*$/" id="precio" placeholder="Precio">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="stock" class="col-sm-2 control-label">Stock</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" ng-model="producto.stock" class="form-control" ng-pattern="/^[0-9]*$/" id="stock" placeholder="Stock">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion" class="col-sm-2 control-label">Descripcion</label>
+
+                            <div class="col-sm-10">
+                                <textarea type="text" ng-model="producto.descripcion" class="form-control" id="descripcion" placeholder="Descripcion"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" ng-disabled="!producto.nombre || !producto.tipo || !producto.precio || !producto.stock ||
+                !producto.descripcion || producto.loading" ng-click="producto.agregarProducto()" class="btn btn-primary">Guardar producto <i class="fa fa-spin fa-spinner" ng-show="producto.loading" aria-hidden="false"></i></button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
