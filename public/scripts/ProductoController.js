@@ -19,6 +19,7 @@
 
             // This request will hit the index method in the AuthenticateController
             // on the Laravel side and will return the list of users
+            vm.loading = true;
             $http.get('api/producto').then(function (response) {
                 // console.log(response);
                 var data = response.data;
@@ -28,8 +29,8 @@
                 var headers = response.headers;
                 var config = response.config;
                 vm.productos = data;
-                vm.loading = true;
                 console.log(data);
+                vm.loading = false;
             }).catch(function onError(response) {
                 // Handle error
                 console.log(response);
