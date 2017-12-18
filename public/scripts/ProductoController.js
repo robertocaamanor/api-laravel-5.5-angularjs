@@ -71,28 +71,22 @@
                 console.log("error");
             });
         };
-        vm.editarProducto = function() {
-            $http.put('api/producto', {
+        vm.editarProducto = function(producto) {
+            $http.put('api/producto' + producto.id, {
                 nombre: vm.nombre,
                 tipo: vm.tipo,
                 precio: vm.precio,
                 stock: vm.stock,
                 descripcion: vm.descripcion
             }).then(function(response){
-
+                $("#modalEditarProducto").modal('hide');
             }).catch(function (){
                 console.log("error");
             });
         }
-        vm.eliminarProducto = function(){
-            $http.delete('api/producto', {
-                nombre: vm.nombre,
-                tipo: vm.tipo,
-                precio: vm.precio,
-                stock: vm.stock,
-                descripcion: vm.descripcion
-            }).then(function(response){
-
+        vm.eliminarProducto = function(index, productoId){
+            $http.delete('api/producto' + producto.productoId).then(function(response){
+                vm.productos.splice(index, 1);
             }).catch(function (){
                 console.log("error");
             });

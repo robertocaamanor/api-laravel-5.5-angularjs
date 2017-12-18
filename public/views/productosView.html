@@ -32,8 +32,8 @@
                             <td>{{ producto.nombre }}</td>
                             <td>{{ producto.tipo }}</td>
                             <td>{{ producto.precio }}</td>
-                            <td><a href="#" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> Editar</a>
-                                <a href="#" class="btn btn-danger btn-xs"> <span class="fa fa-trash-o"></span> Eliminar</a></td>
+                            <td><a href="" ng-click="producto.editarProducto(producto)" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> Editar</a>
+                                <a href="" ng-click="producto.eliminarProducto($index, producto.id)" class="btn btn-danger btn-xs"> <span class="fa fa-trash-o"></span> Eliminar</a></td>
                         </tr>
                     </tbody>
                 </table>
