@@ -69,6 +69,19 @@
                 console.log("error");
             });
         };
+        vm.editarProducto = function() {
+            $http.put('api/producto', {
+                nombre: vm.nombre,
+                tipo: vm.tipo,
+                precio: vm.precio,
+                stock: vm.stock,
+                descripcion: vm.descripcion
+            }).then(function(response){
+
+            }).catch(function (){
+                console.log("error");
+            });
+        }
 
     }
 
