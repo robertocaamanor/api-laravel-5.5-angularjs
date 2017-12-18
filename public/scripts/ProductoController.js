@@ -46,7 +46,9 @@
         vm.openModalCrearProducto = function (){
             $("#modalCrearProducto").modal();
         }
-
+        vm.openModalEditarProducto = function(){
+            $("#modalEditarProducto").modal();
+        }
         vm.agregarProducto = function() {
             vm.loading = true;
             $http.post('api/producto', {
@@ -71,6 +73,19 @@
         };
         vm.editarProducto = function() {
             $http.put('api/producto', {
+                nombre: vm.nombre,
+                tipo: vm.tipo,
+                precio: vm.precio,
+                stock: vm.stock,
+                descripcion: vm.descripcion
+            }).then(function(response){
+
+            }).catch(function (){
+                console.log("error");
+            });
+        }
+        vm.eliminarProducto = function(){
+            $http.delete('api/producto', {
                 nombre: vm.nombre,
                 tipo: vm.tipo,
                 precio: vm.precio,
