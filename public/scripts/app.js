@@ -17,6 +17,11 @@
                     url: '/productos',
                     templateUrl: './views/productosView.html',
                     controller: 'ProductoController'
+                })
+                .state('dashboard', {
+                    url: '/',
+                    templateUrl: './views/dashboardView.html',
+                    controller: 'DashboardCtrl'
                 });
         });
 })();

@@ -26,6 +26,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-app="almacenApp">
 <div class="wrapper">
@@ -322,14 +324,15 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
-                <li class="active treeview">
+                <li><a href="#!/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                <!--<li class="active treeview">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Dashboard</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
-                    <!--<ul class="treeview-menu">
+                    <ul class="treeview-menu">
                         <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
                         <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                     </ul>
@@ -750,6 +753,7 @@
 <!-- Application Scripts -->
 <script src="{{asset('scripts/app.js')}}"></script>
 <script src="{{asset('scripts/ProductoController.js')}}"></script>
+<script src="{{asset('scripts/DashboardCtrl.js')}}"></script>
 
 
 </body>
