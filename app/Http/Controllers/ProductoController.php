@@ -90,7 +90,7 @@ class ProductoController extends Controller
     public function destroy($id)
     {
         $producto = Productos::find($id);
-        $producto->destroy();
+        $producto->delete();
 
         return [
             'deleted' => 'true'

@@ -16,7 +16,7 @@
                 .state('productos', {
                     url: '/productos',
                     templateUrl: './views/productosView.html',
-                    controller: 'ProductoController as producto'
+                    controller: 'ProductoController'
                 });
         });
 })();

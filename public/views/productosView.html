@@ -2,11 +2,11 @@
     <div class="col-xs-12">
         <div class="box">
             <div class="box-header">
-                <h3 class="box-title">Productos <i class="fa fa-spin fa-spinner" ng-show="producto.loading" aria-hidden="false"></i></h3>
+                <h3 class="box-title">Productos <i class="fa fa-spin fa-spinner" ng-show="loading" aria-hidden="false"></i></h3>
 
                 <div class="box-tools">
                     <div class="input-group input-group-sm" style="width: 150px;">
-                        <input type="text" name="table_search" ng-model="producto.buscador" class="form-control pull-right" placeholder="Search">
+                        <input type="text" name="table_search" ng-model="buscador" class="form-control pull-right" placeholder="Search">
 
                         <div class="input-group-btn">
                             <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
@@ -16,7 +16,7 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
-                <a href="" class="btn btn-success" ng-click="producto.openModalCrearProducto()">Agregar producto</a>
+                <a href="" class="btn btn-success" ng-click="openModalCrearProducto()">Agregar producto</a>
                 <hr>
                 <table class="table table-hover">
                     <thead>
@@ -28,12 +28,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="producto in producto.productos | filter: producto.buscador track by producto.id">
+                        <tr ng-repeat="producto in productos | filter: buscador track by producto.id">
                             <td>{{ producto.nombre }}</td>
                             <td>{{ producto.tipo }}</td>
                             <td>{{ producto.precio }}</td>
-                            <td><a href="" ng-click="producto.editarProducto(producto)" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> Editar</a>
-                                <a href="" ng-click="producto.eliminarProducto($index, producto.id)" class="btn btn-danger btn-xs"> <span class="fa fa-trash-o"></span> Eliminar</a></td>
+                            <td><a href="" ng-click="openModalEditarProducto(producto)" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> Editar</a>
+                                <a href="" ng-click="eliminarProducto(producto.id)" class="btn btn-danger btn-xs"> <span class="fa fa-trash-o"></span> Eliminar</a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -59,21 +59,21 @@
                             <label for="nombre" class="col-sm-2 control-label">Nombre</label>
 
                             <div class="col-sm-10">
-                                <input type="text" ng-model="producto.nombre" class="form-control" id="nombre" placeholder="Nombre">
+                                <input type="text" ng-model="nombre" class="form-control" id="nombre" placeholder="Nombre">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="tipo" class="col-sm-2 control-label">Tipo</label>
 
                             <div class="col-sm-10">
-                                <input type="text" ng-model="producto.tipo" class="form-control" id="tipo" placeholder="Tipo">
+                                <input type="text" ng-model="tipo" class="form-control" id="tipo" placeholder="Tipo">
                             </div>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error': formProducto.precio.$error.pattern }">
                             <label for="precio" class="col-sm-2 control-label">Precio</label>
 
                             <div class="col-sm-10">
-                                <input type="text" name="precio" ng-model="producto.precio" class="form-control" ng-pattern="/^[0-9]*$/" id="precio" placeholder="Precio">
+                                <input type="text" name="precio" ng-model="precio" class="form-control" ng-pattern="/^[0-9]*$/" id="precio" placeholder="Precio">
                                 <span class="help-block" ng-show="formProducto.precio.$error.pattern">Debe poner solo numeros!</span>
                             </div>
 
@@ -82,7 +82,7 @@
                             <label for="stock" class="col-sm-2 control-label">Stock</label>
 
                             <div class="col-sm-10">
-                                <input type="text" name="stock" ng-model="producto.stock" class="form-control" ng-pattern="/^[0-9]*$/" id="stock" placeholder="Stock">
+                                <input type="text" name="stock" ng-model="stock" class="form-control" ng-pattern="/^[0-9]*$/" id="stock" placeholder="Stock">
                                 <span class="help-block" ng-show="formProducto.stock.$error.pattern">Debe poner solo numeros!</span>
                             </div>
                         </div>
@@ -90,7 +90,7 @@
                             <label for="descripcion" class="col-sm-2 control-label">Descripcion</label>
 
                             <div class="col-sm-10">
-                                <textarea type="text" ng-model="producto.descripcion" class="form-control" id="descripcion" placeholder="Descripcion"></textarea>
+                                <textarea type="text" ng-model="descripcion" class="form-control" id="descripcion" placeholder="Descripcion"></textarea>
                             </div>
                         </div>
                     </div>
@@ -98,8 +98,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" ng-disabled="!producto.nombre || !producto.tipo || !producto.precio || !producto.stock ||
-                !producto.descripcion || producto.loading" ng-click="producto.agregarProducto()" class="btn btn-primary">Guardar producto <i class="fa fa-spin fa-spinner" ng-show="producto.loading" aria-hidden="false"></i></button>
+                <button type="button" ng-disabled="!nombre || !tipo || !precio || !stock ||
+                !descripcion || loading" ng-click="agregarProducto()" class="btn btn-primary">Guardar producto <i class="fa fa-spin fa-spinner" ng-show="loading" aria-hidden="false"></i></button>
             </div>
         </div>
         <!-- /.modal-content -->
@@ -114,30 +114,31 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Editar Producto</h4>
+                <h4 class="modal-title">Agregar Producto</h4>
             </div>
             <div class="modal-body">
                 <form class="form-horizontal" name="formProducto">
+                    <input type="hidden" ng-model="id" class="form-control" id="producto_id" placeholder="id">
                     <div class="box-body">
                         <div class="form-group">
                             <label for="nombre" class="col-sm-2 control-label">Nombre</label>
 
                             <div class="col-sm-10">
-                                <input type="text" ng-model="producto.nombre" class="form-control" id="nombre" placeholder="Nombre">
+                                <input type="text" ng-model="nombre" class="form-control" id="nombre" placeholder="Nombre">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="tipo" class="col-sm-2 control-label">Tipo</label>
 
                             <div class="col-sm-10">
-                                <input type="text" ng-model="producto.tipo" class="form-control" id="tipo" placeholder="Tipo">
+                                <input type="text" ng-model="tipo" class="form-control" id="tipo" placeholder="Tipo">
                             </div>
                         </div>
                         <div class="form-group" ng-class="{ 'has-error': formProducto.precio.$error.pattern }">
                             <label for="precio" class="col-sm-2 control-label">Precio</label>
 
                             <div class="col-sm-10">
-                                <input type="text" name="precio" ng-model="producto.precio" class="form-control" ng-pattern="/^[0-9]*$/" id="precio" placeholder="Precio">
+                                <input type="text" name="precio" ng-model="precio" class="form-control" ng-pattern="/^[0-9]*$/" id="precio" placeholder="Precio">
                                 <span class="help-block" ng-show="formProducto.precio.$error.pattern">Debe poner solo numeros!</span>
                             </div>
 
@@ -146,7 +147,7 @@
                             <label for="stock" class="col-sm-2 control-label">Stock</label>
 
                             <div class="col-sm-10">
-                                <input type="text" name="stock" ng-model="producto.stock" class="form-control" ng-pattern="/^[0-9]*$/" id="stock" placeholder="Stock">
+                                <input type="text" name="stock" ng-model="stock" class="form-control" ng-pattern="/^[0-9]*$/" id="stock" placeholder="Stock">
                                 <span class="help-block" ng-show="formProducto.stock.$error.pattern">Debe poner solo numeros!</span>
                             </div>
                         </div>
@@ -154,7 +155,7 @@
                             <label for="descripcion" class="col-sm-2 control-label">Descripcion</label>
 
                             <div class="col-sm-10">
-                                <textarea type="text" ng-model="producto.descripcion" class="form-control" id="descripcion" placeholder="Descripcion"></textarea>
+                                <textarea type="text" ng-model="descripcion" class="form-control" id="descripcion" placeholder="Descripcion"></textarea>
                             </div>
                         </div>
                     </div>
@@ -162,8 +163,8 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" ng-disabled="!producto.nombre || !producto.tipo || !producto.precio || !producto.stock ||
-                !producto.descripcion || producto.loading" ng-click="producto.editarProducto()" class="btn btn-primary">Editar producto <i class="fa fa-spin fa-spinner" ng-show="producto.loading" aria-hidden="false"></i></button>
+                <button type="button" ng-disabled="!nombre || !tipo || !precio || !stock ||
+                !descripcion || loading" ng-click="editarProducto()" class="btn btn-primary">Editar producto <i class="fa fa-spin fa-spinner" ng-show="loading" aria-hidden="false"></i></button>
             </div>
         </div>
         <!-- /.modal-content -->

@@ -6,92 +6,70 @@
         .module('almacenApp')
         .controller('ProductoController', ProductoController);
 
-    function ProductoController($http) {
-
-        var vm = this;
-
-        vm.productos;
-        vm.error;
-
-        vm.loading = false;
-
-        vm.getProductos = function() {
-
-            // This request will hit the index method in the AuthenticateController
-            // on the Laravel side and will return the list of users
-            vm.loading = true;
-            $http.get('api/producto').then(function (response) {
-                // console.log(response);
+    function ProductoController($http, $scope, $rootScope, $filter) {
+        $scope.productos = [];
+        $scope.loading = false;
+        $scope.getProductos = function(){
+            $scope.loading = true;
+            $http.get('api/producto').then(function(response){
                 var data = response.data;
-                // console.log(data);
-                var status = response.status;
-                var statusText = response.statusText;
-                var headers = response.headers;
-                var config = response.config;
-                vm.productos = data;
-                console.log(data);
-                vm.loading = false;
-            }).catch(function onError(response) {
-                // Handle error
-                console.log(response);
-                var data = response.data;
-                console.log(data);
-                var status = response.status;
-                var statusText = response.statusText;
-                var headers = response.headers;
-                var config = response.config;
+                $scope.productos = data;
+                $scope.loading = false;
             });
         }
-        vm.getProductos();
-        vm.openModalCrearProducto = function (){
-            $("#modalCrearProducto").modal();
+        $scope.openModalCrearProducto = function(){
+            $('#modalCrearProducto').modal();
+            $scope.nombre = '';
+            $scope.tipo = '';
+            $scope.precio = '';
+            $scope.stock = '';
+            $scope.descripcion = '';
         }
-        vm.openModalEditarProducto = function(){
-            $("#modalEditarProducto").modal();
-        }
-        vm.agregarProducto = function() {
-            vm.loading = true;
+        $scope.agregarProducto = function(){
+            $scope.loading = true;
             $http.post('api/producto', {
-                nombre: vm.nombre,
-                tipo: vm.tipo,
-                precio: vm.precio,
-                stock: vm.stock,
-                descripcion: vm.descripcion
-            }).then(function (response) {
-                console.log(vm.productos);
-                // vm.tasks.push(response.data);
-                vm.productos.unshift(response.data);
-                console.log(vm.tasks);
-                vm.producto = '';
-                $("#modalCrearProducto").modal('hide');
-                vm.getProductos();
-                // alert(data.message);
-                // alert("Task Created Successfully");
-            }).catch(function () {
-                console.log("error");
-            });
-        };
-        vm.editarProducto = function(producto) {
-            $http.put('api/producto' + producto.id, {
-                nombre: vm.nombre,
-                tipo: vm.tipo,
-                precio: vm.precio,
-                stock: vm.stock,
-                descripcion: vm.descripcion
+                nombre: $scope.nombre,
+                tipo: $scope.tipo,
+                precio: $scope.precio,
+                stock: $scope.stock,
+                descripcion: $scope.descripcion
             }).then(function(response){
-                $("#modalEditarProducto").modal('hide');
-            }).catch(function (){
-                console.log("error");
+                console.log($scope.productos);
+                $scope.productos.unshift(response.data);
+                $('#modalCrearProducto').modal('hide');
             });
+            $scope.getProductos();
         }
-        vm.eliminarProducto = function(index, productoId){
-            $http.delete('api/producto' + producto.productoId).then(function(response){
-                vm.productos.splice(index, 1);
-            }).catch(function (){
-                console.log("error");
+        $scope.getProductos();
+        $scope.openModalEditarProducto = function(producto){
+            $('#modalEditarProducto').modal();
+            $scope.nombre = producto.nombre;
+            $scope.tipo = producto.tipo;
+            $scope.precio = producto.precio;
+            $scope.stock = producto.stock;
+            $scope.descripcion = producto.descripcion;
+            $scope.id = producto.id;
+        }
+        $scope.editarProducto = function(){
+            $scope.loading = true;
+            $http.put('api/producto/' + $scope.id, {
+                nombre: $scope.nombre,
+                tipo: $scope.tipo,
+                precio: $scope.precio,
+                stock: $scope.stock,
+                descripcion: $scope.descripcion
+            }).then(function(response) {
+                $('#modalEditarProducto').modal('hide');
             });
+            $scope.getProductos();
         }
-
+        $scope.eliminarProducto = function(productoId){
+            console.log(productoId);
+            $http.delete('api/producto/' + productoId)
+            .then(function(){
+            });
+            $scope.getProductos();
+        }
     }
 
 })();
