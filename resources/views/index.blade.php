@@ -13,7 +13,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="{{asset('dist/css/skins/_all-skins.min.css')}}">
     <!-- Morris chart -->
-    <link rel="stylesheet" href="{{asset('bower_components/morris.js/morris.cs')}}">
+    <link rel="stylesheet" href="{{asset('bower_components/morris.js/morris.css')}}">
     <!-- jvectormap -->
     <link rel="stylesheet" href="{{asset('bower_components/jvectormap/jquery-jvectormap.css')}}">
     <!-- Date Picker -->
@@ -741,6 +741,7 @@
 
 <!-- <script src="node_modules/angular-ui-router/build/angular-ui-router.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
+<script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.0.js"></script>
 
 <!-- <script src="node_modules/satellizer/satellizer.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/satellizer/0.14.1/satellizer.js"></script>
