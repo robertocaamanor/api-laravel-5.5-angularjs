@@ -28,7 +28,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="producto in productos | filter: buscador track by producto.id">
+                        <tr ng-repeat="producto in productos | filter: buscador track by producto.id"
+                        ng-class="{ 'danger': producto.stock <= 5 }">
                             <td>{{ producto.nombre }}</td>
                             <td>{{ producto.tipo }}</td>
                             <td>{{ producto.precio }}</td>
