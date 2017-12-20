@@ -18,7 +18,7 @@
             <div class="box-body table-responsive">
                 <a href="" class="btn btn-success" ng-click="openModalCrearProducto()">Agregar producto</a>
                 <hr>
-                <table class="table table-hover">
+                <table class="table table-hover" at-table at-paginated at-list="productos | filter: buscador" at-config="configTable">
                     <thead>
                         <tr>
                             <th>Nombre</th>
@@ -28,16 +28,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="producto in productos | filter: buscador track by producto.id"
-                        ng-class="{ 'danger': producto.stock <= 5 }">
-                            <td>{{ producto.nombre }}</td>
-                            <td>{{ producto.tipo }}</td>
-                            <td>{{ producto.precio }}</td>
-                            <td><a href="" ng-click="openModalEditarProducto(producto)" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> Editar</a>
-                                <a href="" ng-click="eliminarProducto(producto.id)" class="btn btn-danger btn-xs"> <span class="fa fa-trash-o"></span> Eliminar</a></td>
+                        <tr>
+                            <td at-implicit at-sortable at-attribute="nombre"></td>
+                            <td at-implicit at-sortable at-attribute="tipo"></td>
+                            <td at-implicit at-sortable at-attribute="precio"></td>
+                            <td><a href="" ng-click="openModalEditarProducto(item)" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> Editar</a>
+                                <a href="" ng-click="eliminarProducto(item.id)" class="btn btn-danger btn-xs"> <span class="fa fa-trash-o"></span> Eliminar</a></td>
                         </tr>
                     </tbody>
                 </table>
+                <at-pagination at-list="productos" at-config="configTable" class="pagination pagination-sm no-margin pull-right"></at-pagination>
             </div>
             <!-- /.box-body -->
         </div>

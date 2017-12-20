@@ -9,6 +9,10 @@
     function ProductoController($http, $scope, $rootScope, $filter) {
         $scope.productos = [];
         $scope.loading = false;
+        $scope.configTable = {
+            itemsPerPage: 10,
+            fillLastPage: true
+        }
         $scope.getProductos = function(){
             $scope.loading = true;
             $http.get('api/producto').then(function(response){

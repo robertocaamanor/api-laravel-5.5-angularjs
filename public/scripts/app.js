@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('almacenApp', ['ui.router', 'satellizer'])
+        .module('almacenApp', ['ui.router', 'satellizer', 'angular-table'])
         .config(function($stateProvider, $urlRouterProvider, $authProvider) {
 
             // Satellizer configuration that specifies which API
