@@ -756,6 +756,7 @@
 <script src="{{asset('scripts/app.js')}}"></script>
 <script src="{{asset('scripts/ProductoController.js')}}"></script>
 <script src="{{asset('scripts/DashboardCtrl.js')}}"></script>
+<script src="{{asset('scripts/tipoProductoCtrl.js')}}"></script>
 <script src="{{asset('scripts/angular-table.min.js')}}"></script>
 
 </body>

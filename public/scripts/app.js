@@ -18,6 +18,11 @@
                     templateUrl: './views/productosView.html',
                     controller: 'ProductoController'
                 })
+                .state('tipoProductos', {
+                    url: '/tipo-productos',
+                    templateUrl: './views/tipoProducto.html',
+                    controller: 'TipoProductoCtrl'
+                })
                 .state('dashboard', {
                     url: '/',
                     templateUrl: './views/dashboardView.html',

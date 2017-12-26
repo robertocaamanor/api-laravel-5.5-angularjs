@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-xs-12">
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">Productos <i class="fa fa-spin fa-spinner" ng-show="loading" aria-hidden="false"></i></h3>
+
+                <div class="box-tools">
+                    <div class="input-group input-group-sm" style="width: 150px;">
+                        <input type="text" name="table_search" ng-model="buscador" class="form-control pull-right" placeholder="Search">
+
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+                <a href="" class="btn btn-success" ng-click="openModalCrearProducto()">Agregar producto</a>
+                <hr>
+                <table class="table table-hover" at-table at-paginated at-list="tipoProducto | filter: buscador" at-config="configTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td at-implicit at-sortable at-attribute="tipo"></td>
+                            <td><a href="" ng-click="openModalEditarProducto(item)" class="btn btn-warning btn-xs"><span class="fa fa-edit"></span> Editar</a>
+                                <a href="" ng-click="eliminarProducto(item.id)" class="btn btn-danger btn-xs"> <span class="fa fa-trash-o"></span> Eliminar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <at-pagination at-list="tipoProducto" at-config="configTable" class="pagination pagination-sm no-margin pull-right"></at-pagination>
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /.box -->
+    </div>
+</div>
