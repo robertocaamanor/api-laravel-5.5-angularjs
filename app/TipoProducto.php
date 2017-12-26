@@ -10,5 +10,5 @@ class TipoProducto extends Model
 
     protected $table = 'tipoproducto';
 
-    protected $fillable = 'tipo';
+    protected $fillable = ['tipo'];
 }
