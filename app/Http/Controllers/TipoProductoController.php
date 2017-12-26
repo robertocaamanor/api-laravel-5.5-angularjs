@@ -35,7 +35,7 @@ class TipoProductoController extends Controller
      */
     public function store(Request $request)
     {
-        $tipoproducto = TipoProducto::create($request->all());
+        $tipoproducto = new TipoProducto($request->all());
         $tipoproducto->save();
         return $tipoproducto;
     }
@@ -72,7 +72,7 @@ class TipoProductoController extends Controller
     public function update(Request $request, $id)
     {
         $tipoproducto = TipoProducto::find($id);
-        $tipoproducto->nombre = $request->input('nombre');
+        $tipoproducto->tipo = $request->input('tipo');
         $tipoproducto->save();
         return $tipoproducto;
     }
