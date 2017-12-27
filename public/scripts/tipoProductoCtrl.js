@@ -10,7 +10,7 @@
         $scope.tipoProducto = [];
         $scope.loading = false;
         $scope.configTable = {
-            itemsPerPage: 10,
+            itemsPerPage: 5,
             fillLastPage: true
         }
         $scope.getTipoProducto = function(){
