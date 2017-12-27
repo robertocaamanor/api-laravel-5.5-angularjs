@@ -18,9 +18,9 @@
                     templateUrl: './views/productosView.html',
                     controller: 'ProductoController'
                 })
-                .state('tipoProductos', {
+                .state('tipoProducto', {
                     url: '/tipo-productos',
-                    templateUrl: './views/tipoProducto.html',
+                    templateUrl: './views/tipoProductoView.html',
                     controller: 'TipoProductoCtrl'
                 })
                 .state('dashboard', {

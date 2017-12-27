@@ -6,7 +6,7 @@
         .module('almacenApp')
         .controller('TipoProductoCtrl', TipoProductoCtrl);
 
-    function ProductoController($http, $scope, $rootScope, $filter) {
+    function TipoProductoCtrl($http, $scope, $rootScope, $filter) {
         $scope.tipoProducto = [];
         $scope.loading = false;
         $scope.configTable = {
@@ -20,6 +20,17 @@
                 $scope.tipoProducto = data;
                 $scope.loading = false;
             });
+        }
+        $scope.crearTipoProducto = function(){
+            $scope.loading = true;
+            $http.post('api/tipo-producto', {
+                tipo: $scope.tipo
+            }).then(function(response){
+                console.log($scope.productos);
+                $scope.tipoProducto.unshift(response.data);
+                $scope.tipo = '';
+            });
+            $scope.getTipoProducto();
         }
         $scope.getTipoProducto();        
     }
