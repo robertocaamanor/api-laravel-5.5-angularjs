@@ -24,11 +24,33 @@
         $scope.crearTipoProducto = function(){
             $scope.loading = true;
             $http.post('api/tipo-producto', {
-                tipo: $scope.tipo
+                tipo: $scope.tipoProductoText
             }).then(function(response){
                 console.log($scope.productos);
                 $scope.tipoProducto.unshift(response.data);
+                $scope.tipoProductoText = '';
+            });
+            $scope.getTipoProducto();
+        }
+        $scope.openModalEditarTipoProducto = function(tipoProducto){
+            $('#modalEditarTipoProducto').modal();
+            $scope.tipo = tipoProducto.tipo;
+            $scope.id = tipoProducto.id;
+        }
+        $scope.editarTipoProducto = function(){
+            $scope.loading = true;
+            $http.put('api/tipo-producto/' + $scope.id, {
+                tipo: $scope.tipo
+            }).then(function(response){
+                $('#modalEditarTipoProducto').modal('hide');
                 $scope.tipo = '';
+            });
+            $scope.getTipoProducto();
+        }
+        $scope.eliminarProducto = function(tipoProductoId){
+            console.log(tipoProductoId);
+            $http.delete('api/tipo-producto/' + tipoProductoId)
+            .then(function(){
             });
             $scope.getTipoProducto();
         }
