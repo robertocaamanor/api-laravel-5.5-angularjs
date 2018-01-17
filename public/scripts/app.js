@@ -27,6 +27,16 @@
                     url: '/',
                     templateUrl: './views/dashboardView.html',
                     controller: 'DashboardCtrl'
+                })
+                .state('ventas', {
+                    url: '/ventas',
+                    templateUrl: './views/ventasView.html',
+                    controller: 'VentasController'
+                })
+                .state('nuevaVenta', {
+                    url: '/ventas/nuevo',
+                    templateUrl: './views/nuevaVentaView.html',
+                    controller: 'VentasController'
                 });
         });
 })();
