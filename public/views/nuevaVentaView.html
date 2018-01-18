@@ -52,7 +52,7 @@
             </div>
             <!-- /.box-body -->
             <div class="box-footer">
-                <button ng-click="agregarVenta()" type="submit" class="btn btn-info pull-right">Ingresar venta</button>
+                <button ng-click="agregarVenta()" ng-disabled="!producto || !nombre_cliente || !cantidad || !forma_pago ||  loading" type="submit" class="btn btn-info pull-right">Ingresar venta</button>
             </div>
             <!-- /.box-footer -->
         </form>
