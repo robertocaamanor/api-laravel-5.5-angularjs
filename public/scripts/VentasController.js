@@ -43,19 +43,14 @@
         $scope.getProductos();
         $scope.agregarVenta = function(){
             $scope.loading = true;
-            $scope.preciototal = parseInt($scope.cantidad) * parseInt($scope.precio);
+            $scope.preciototal = parseInt($scope.cantidad) * parseInt($scope.producto['precio']);
             $http.post('api/ventas', {
-                id_producto: $scope.producto,
+                id_producto: $scope.producto['id'],
                 nombre_cliente: $scope.nombre_cliente,
                 cantidad: $scope.cantidad,
                 precio_venta: $scope.preciototal,
-                tipo_pago: $scope.forma_pago
+                tipo_pago: $scope.forma_pago['id']
             }).then(function(response){
-                $scope.producto = '';
-                $scope.nombre_cliente = '';
-                $scope.cantidad = '';
-                $scope.precio = '';
-                $scope.forma_pago = '';
                 $location.path('/ventas');
             });
         }
