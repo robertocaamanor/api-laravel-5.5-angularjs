@@ -121,7 +121,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-      <ul class="products-list product-list-in-box" ng-repeat="producto in ultimosProductos | limitTo: 5 | orderBy: '-created_at'">
+      <ul class="products-list product-list-in-box" ng-repeat="producto in ultimosProductos | orderBy: '-created_at' | limitTo: 5">
         <li class="item">
           <div class="product-img">
             <img src="dist/img/default-50x50.gif" alt="Product Image">
