@@ -23,6 +23,8 @@
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="{{asset('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
     <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+    <!-- Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -737,7 +739,8 @@
 <!-- Application Dependencies -->
 <!-- <script src="node_modules/angular/angular.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-
+<!-- Select2 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 <!-- <script src="node_modules/angular-ui-router/build/angular-ui-router.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
@@ -746,7 +749,6 @@
 <!-- <script src="node_modules/satellizer/satellizer.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/satellizer/0.14.1/satellizer.js"></script>
 
-
 <!-- Application Scripts -->
 <script src="{{asset('scripts/app.js')}}"></script>
 <script src="{{asset('scripts/ProductoController.js')}}"></script>
@@ -754,6 +756,12 @@
 <script src="{{asset('scripts/tipoProductoCtrl.js')}}"></script>
 <script src="{{asset('scripts/angular-table.min.js')}}"></script>
 <script src="{{asset('scripts/VentasController.js')}}"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#producto').select2();
+    });
+</script>
 </body>
 
 

@@ -61,3 +61,87 @@
     <!-- ./col -->
   </div>
   <!-- /.row -->
+  <!-- TABLE: LATEST ORDERS -->
+  <div class="box box-info">
+    <div class="box-header with-border">
+      <h3 class="box-title">Últimas ventas</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <div class="table-responsive">
+        <table class="table no-margin" at-table at-paginated at-list="ultimasVentas">
+          <thead>
+          <tr>
+            <th>Fecha venta</th>
+            <th>Nombre</th>
+            <th>Cliente</th>
+            <th>Precio Venta</th>
+            <th>Cantidad</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td at-implicit at-sortable at-attribute="created_at" at-sortable at-initial-sorting="desc"></td>
+            <td at-implicit at-sortable at-attribute="nombre"></td>
+            <td at-implicit at-sortable at-attribute="nombre_cliente"></td>
+            <td at-implicit at-sortable at-attribute="cantidad"></td>
+            <td at-implicit at-sortable at-attribute="precio_venta"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer clearfix">
+      <a href="#!/ventas/nuevo" class="btn btn-sm btn-info btn-flat pull-left">Nueva venta</a>
+      <a href="#!/ventas" class="btn btn-sm btn-default btn-flat pull-right">Todas las ventas</a>
+    </div>
+    <!-- /.box-footer -->
+  </div>
+  <!-- /.box -->
+</div>
+<!-- /.col -->
+<!-- PRODUCT LIST -->
+<div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Últimos productos añadidos</h3>
+
+      <div class="box-tools pull-right">
+        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+        </button>
+        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+      </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+      <ul class="products-list product-list-in-box" ng-repeat="producto in ultimosProductos | limitTo: 5 | orderBy: '-created_at'">
+        <li class="item">
+          <div class="product-img">
+            <img src="dist/img/default-50x50.gif" alt="Product Image">
+          </div>
+          <div class="product-info">
+            <a href="javascript:void(0)" class="product-title">{{producto.nombre}}
+              <span class="label label-warning pull-right">{{producto.precio}}</span></a>
+            <span class="product-description">
+                  {{producto.descripcion}}
+                </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer text-center">
+      <a href="#!/productos" class="uppercase">Ver todos los productos</a>
+    </div>
+    <!-- /.box-footer -->
+  </div>
+  <!-- /.box -->
+</div>
+<!-- /.col -->

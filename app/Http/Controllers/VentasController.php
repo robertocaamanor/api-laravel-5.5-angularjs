@@ -16,7 +16,8 @@ class VentasController extends Controller
      */
     public function index()
     {
-        return Ventas::leftjoin('productos', 'productos.id', '=', 'ventas.id_producto')->get();
+        return Ventas::leftjoin('productos', 'productos.id', '=', 'ventas.id_producto')
+        ->select('productos.nombre', 'ventas.nombre_cliente', 'ventas.precio_venta', 'ventas.cantidad', 'ventas.created_at')->get();
     }
 
     /**

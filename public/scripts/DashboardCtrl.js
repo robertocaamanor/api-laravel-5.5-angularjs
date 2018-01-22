@@ -50,6 +50,25 @@
                 
             }
             $scope.productosConBajoStock();
+            $scope.ultimasVentas = function(){
+                $scope.loading = true;
+                $http.get('api/ventas').then(function(response){
+                    var data = response.data;
+                    $scope.ultimasVentas = data;
+                    $scope.loading = false;
+                    console.log(data);
+                });
+            }
+            $scope.ultimasVentas();
+            $scope.ultimosProductos = function(){
+                $scope.loading = true;
+                $http.get('api/producto').then(function(response){
+                    var data = response.data;
+                    $scope.ultimosProductos = data;
+                    $scope.loading = false;
+                });
+            }
+            $scope.ultimosProductos();
         }
     
     })();
