@@ -327,7 +327,7 @@
             <!-- sidebar menu: : style can be found in sidebar.less -->
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">MAIN NAVIGATION</li>
-                <li><a href="#!/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                <li><a ui-sref="dashboard" ui-sref-active="active"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                 <li class="treeview">
                     <a href="#">
                         <i class="fa fa-dashboard"></i> <span>Panel de Control</span>
@@ -336,7 +336,7 @@
                     </span>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="#!/tipo-productos"><i class="fa fa-circle-o"></i> Tipos de Productos</a></li>
+                                <li><a ui-sref="tipoProducto" ui-sref-active="active"><i class="fa fa-circle-o"></i> Tipos de Productos</a></li>
                             </ul>
                         </li>
                 <!--
@@ -484,11 +484,11 @@
                         <span>Ventas</span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#!/ventas"><i class="fa fa-circle-o"></i> Lista de ventas</a></li>
-                        <li><a href="#!/ventas/nuevo"><i class="fa fa-circle-o"></i> Nueva venta</a></li>
+                        <li><a ui-sref="ventas" ui-sref-active="active"><i class="fa fa-circle-o"></i> Lista de ventas</a></li>
+                        <li><a ui-sref="nuevaVenta" ui-sref-active="active"><i class="fa fa-circle-o"></i> Nueva venta</a></li>
                     </ul>
                 </li>
-                <li><a href="#!/productos"><i class="fa fa-circle-o text-red"></i> <span>Productos</span></a></li>
+                <li><a ui-sref="productos" ui-sref-active="active"><i class="fa fa-product-hunt"></i> <span>Productos</span></a></li>
                 <!--<li><a href=""><i class="fa fa-circle-o text-yellow"></i> <span>Ventas</span></a></li>
                 <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>-->
             </ul>
